@@ -1,0 +1,7 @@
+{
+	"database_user":"root",
+	"database_pass":"ayambakar",
+	"database_host":"localhost",
+	"database_port":"3306",
+	"database_name":"test1"
+}
