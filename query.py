@@ -11,7 +11,7 @@ def get_config():
 	return data_json
 
 
-class _query(object):
+class Query(object):
 	"""docstring for _query"""
 	def __init__(self):
 		super(_query, self).__init__()
@@ -43,18 +43,26 @@ class _query(object):
 	def select(self,table_name=None,table_column=None,table_filter=None):
 		db = self.db
 		if table_name is None:
-			return "your tabble_name is None"
+			return "your table_name is None"
 		if table_filter is None or table_column is None:
 			query_select = "SELECT * FROM `{table_name}`".format(table_name=table_name)
 		elif table_filter or table_column is not None:
 			query_select = "SELECT * FROM `{table_name}` WHERE {table_column} = {table_filter} ".format(table_name=table_name,\
 				table_column=table_column,table_filter=table_filter)
-		print query_select
 		db_sql = db.cursor()
 		db_sql.execute(query_select)
-		select = db_sql.fetchone()
+		data_sql = db_sql.fetchone()
 		#select = "testis"
-		return select
+		return data_sql
+	def query(self,query=None):
+		db = self.db_sql
+		if query is None:
+			return "your query is none"
+		db_sql = db.cursor()
+		db_sql.execute(query_select)
+		data_sql = db_sql.fetchone()
+		return data_sql
 
-query= _query()
+
+query= Query()
 print query.select(table_name="hello",table_column="No",table_filter="1")
