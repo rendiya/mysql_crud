@@ -22,17 +22,20 @@ class Query(object):
 			self.db = db
 		except Exception as e:
 			print e
-			db=sql.connect(host=data_sql['database_host'],user=data_sql['database_user'],
-			passwd=data_sql['database_pass'])
-			"""if db not exist create db"""
-			db_sql = db.cursor()
-			db_sql.execute('CREATE DATABASE {database_name}'.format(database_name=data_sql['database_name']))
-			db.close()
-			time.sleep(0.2)
-			"""time sleep for waiting dumping effect mysql"""
-			db=sql.connect(host=data_sql['database_host'],user=data_sql['database_user'],
-			passwd=data_sql['database_pass'],db=data_sql['database_name'])
-			self.db = db
+			try:
+				db=sql.connect(host=data_sql['database_host'],user=data_sql['database_user'],
+				passwd=data_sql['database_pass'])
+				"""if db not exist create db"""
+				db_sql = db.cursor()
+				db_sql.execute('CREATE DATABASE {database_name}'.format(database_name=data_sql['database_name']))
+				db.close()
+				time.sleep(0.2)
+				"""time sleep for waiting dumping effect mysql"""
+				db=sql.connect(host=data_sql['database_host'],user=data_sql['database_user'],
+				passwd=data_sql['database_pass'],db=data_sql['database_name'])
+				self.db = db
+			except Exception as e:
+				print "bad configuration"
 	def version(self):
 		db = self.db
 		db_sql = db.cursor()
