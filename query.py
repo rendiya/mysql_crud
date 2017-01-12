@@ -54,18 +54,19 @@ class Query(object):
 				table_column=table_column,table_filter=table_filter)
 		db_sql = db.cursor()
 		db_sql.execute(query_select)
-		data_sql = db_sql.fetchone()
-		#select = "testis"
+		data_sql = db_sql.fetchall()
+		db_sql.close()
 		return data_sql
 	def query(self,query=None):
-		db = self.db_sql
+		db = self.db
 		if query is None:
 			return "your query is none"
 		db_sql = db.cursor()
 		db_sql.execute(query)
-		data_sql = db_sql.fetchone()
+		data_sql = db_sql.fetchall()
+		db_sql.close()
 		return data_sql
-
 
 query= Query()
 print query.select(table_name="hello",table_column="No",table_filter="1")
+print query.query("SELECT VERSION()")
