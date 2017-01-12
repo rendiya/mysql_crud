@@ -18,7 +18,7 @@ class Query(object):
 		data_sql = get_config()
 		try:
 			db = sql.connect(host=data_sql['database_host'],user=data_sql['database_user'],
-			passwd=data_sql['database_pass'],db=data_sql['database_name'])
+			passwd=data_sql['database_pass'],db=data_sql['database_name'],port=data_sql['database_port'])
 			self.db = db
 		except Exception as e:
 			print e
