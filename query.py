@@ -62,7 +62,7 @@ class Query(object):
 		if query is None:
 			return "your query is none"
 		db_sql = db.cursor()
-		db_sql.execute(query_select)
+		db_sql.execute(query)
 		data_sql = db_sql.fetchone()
 		return data_sql
 
