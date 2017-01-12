@@ -12,9 +12,9 @@ def get_config():
 
 
 class Query(object):
-	"""docstring for _query"""
+	"""docstring for Query"""
 	def __init__(self):
-		super(_query, self).__init__()
+		super(Query, self).__init__()
 		data_sql = get_config()
 		try:
 			db = sql.connect(host=data_sql['database_host'],user=data_sql['database_user'],
