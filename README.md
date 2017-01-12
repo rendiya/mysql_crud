@@ -1,5 +1,15 @@
 testing db with class like orm
 
+please install MySQLdb
+
+```
+pip install MySQL-python
+```
+or
+```
+pip install -r requirement.txt
+```
+
 for using
 ```
 query = Query()
